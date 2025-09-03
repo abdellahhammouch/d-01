@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    char nom[50],sexe,email[100],prenom[50];
+    char nom[100],sexe,email[100],prenom[50];
     int age;
     printf("Entrez votre prénom : ");
     scanf("%s", prenom);
@@ -19,5 +19,5 @@ int main() {
     printf("Âge    : %d\n", age);
     printf("Sexe   : %c\n", sexe);
     printf("Email  : %s\n", email);
-
+    
 }
