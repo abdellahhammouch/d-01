@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int n,f=0,i;
+    int n,f=0;
     printf("saisis un nombre entier");
     scanf("%d",&n);
     while(n!=0){
