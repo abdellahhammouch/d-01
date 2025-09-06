@@ -1,4 +1,5 @@
 #include <stdio.h>
+<<<<<<< HEAD
 
 void inverser_chaine(char chaine[]) {
     int i,n=0;
@@ -25,4 +26,24 @@ int main() {
     printf("Votre chaîne inversée : %s\n", chaine);
 
     return 0;
+=======
+int inversion(char T[n], intn){
+    int f,a=0,b=1,i;
+    for(i=2;i<=n;i++){
+        f=a+b;
+        a=b;
+        b=f;
+    }
+    return f;
+}
+int main() 
+{
+    int n,invers;
+    printf("saisisla taille du chaine :");
+    scanf("%d",&n);
+    char T[n];
+    invers=inversion(n);
+    printf("F(%d)=%d \n",n,invers);
+    
+>>>>>>> 1f00f2d22f1dff4bb56406e6b5bc64c45fbaff16
 }
