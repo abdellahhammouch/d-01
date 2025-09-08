@@ -89,12 +89,12 @@ int main()
                         strcpy(asupp[supp], A[i]);
                         psupp[supp]=P[i];
                         qsupp[supp]=Q[i];
+                        supp++;
                         for(j=i;j<livre-1;j++){
                            strcpy(T[j], T[j+1]);
                            strcpy(A[j], A[j+1]);
                            P[j]=P[j+1];
                            Q[j]=Q[j+1];
-                           supp++;
                         }  
                         printf("le livre est supprimé \n");
                         break;

@@ -3,25 +3,32 @@
 struct personnes{
     int age;
     char nom[100];
-    char prénom[100];
+    char prenom[100];
 };
 
 int main() {
+    int i,n;
+
+    struct personnes p1[100];
+    printf("saisis le nombre des personnes :");
+    scanf("%d",&n);
+    for (i=0;i<n;i++){
+        
+        printf("saisis ton prenom :");
+        scanf("%s", p1[i].prenom);
+
+        printf("saisis ton nom :");
+        scanf("%s", p1[i].nom);
+
+        printf("saisis ton age :");
+        scanf("%d",&p1[i].age);
+        
+    }
     
-    struct personnes p1;
-    
-    printf("saisis ton prénom :");
-    fgets(p1.prénom, 100, stdin);
-
-    printf("saisis ton nom :");
-    fgets(p1.nom, 100, stdin);
-
-    printf("saisis ton age :");
-    scanf("%d",&p1.age);
-
     printf("Votre informations entrées : \n");
-    printf("%s", p1.prénom);
-    printf("%s",p1.nom);
-    printf("%d ",p1.age);  
-
+    for (i=0;i<n;i++){
+        printf("%s \t", p1[i].prenom);
+        printf("%s \t",p1[i].nom);
+        printf("%d \n",p1[i].age); 
+    }
 }
