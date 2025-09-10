@@ -4,10 +4,10 @@
 void main()
 {
 
-    int n,low=0, i, r, cmp1 = 0, cmp2 = 0, c;
+    int n,min=0, i, j, r, cmp1 = 0, cmp2 = 0, c;
     printf("saisis la dimension du tableau :");
     scanf("%d", &n);
-    int t[n], mid = n / 2, s, high=n-1;
+    int t[n], mid = n / 2, s, max=n-1;
     for (i = 0; i < n; i++)
     {
         printf("sasis l'element %d :", i + 1);
@@ -29,15 +29,15 @@ void main()
             }
         }
     }
-     while (low <= high) {
-        int mid = low + (high - low) / 2;
-        if (t[mid] == x)
+     while (min <= max) {
+        int mid = min + (max - min) / 2;
+        if (t[mid] == r ){
             cmp1++;
-
+        }
         if (t[mid] < r)
-            low = mid + 1;
+            min = mid + 1;
         else
-            high = mid - 1;
+            max = mid - 1;
     }
     if (cmp1 > 0)
     {
