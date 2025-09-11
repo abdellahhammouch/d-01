@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-<<<<<<< HEAD
-
-struct joueurs{
-=======
 struct joueurs
 {
->>>>>>> e34f43f5f0c7b825fe098a581a5588324bc303af
     int id;
     char nom[20];
     char prenom[20];
@@ -17,12 +12,11 @@ struct joueurs
     int buts;
 };
 
-<<<<<<< HEAD
-struct joueurs ajout(int id){
+struct joueurs ajout(int indice){
             int p;
             struct joueurs j;
-                j.id = id;
-                id++;
+                j.id = indice;
+                indice++;
                 printf("saisis le nom du joueur :");
                 scanf("%s", j.nom);
                 printf("saisis le prenom du joueur :");
@@ -57,7 +51,98 @@ struct joueurs ajout(int id){
                 }
                 return j; 
 }
+void trinom(struct joueurs joueur[],int indice)
+{
+    int c,m,compteur;
+    struct joueurs j1;
+    for(c=0;c<compteur+c;c++){
+        int compteur=0;
+        for(m=0;m<indice-1;m++){
+            if (strcmp(joueur[m].nom[0] , joueur[m+1].nom[0])>0)
+            {
+                j1 = joueur[m];
+                joueur[m] = joueur[m + 1];
+                joueur[m + 1] = j1;
+                compteur++;
+            }
+        }
+    }
+}
+void triposte(struct joueurs joueur[], int indice)
+{
+    int i,g,m,a,d,j,cmp=0;
+    struct joueurs j1;
+    do{
+    for (i = 1; i < g+i; i++)
+    {
+        g=0;
+        if (strcmp(joueur[i - 1].poste, "guardien")==0)
+        {
+            j1=joueur[j];
+            for( j=i ; j>0 ; j-- ){
+                joueur[j]=joueur[j-1];
+            }
+            joueur[j] = j1;
+            g++;
+            cmp++;
+        }
+    }
+    } while (g!=0);
+    do{
+    for (i = cmp; i < d+i; i++)
+    {
+        d=0;
+        if (strcmp(joueur[i - 1].poste, "guardien")==0)
+        {
+            j1=joueur[j];
+            for( j=i ; j>0 ; j-- ){
+                joueur[j]=joueur[j-1];
+            }
+            joueur[j] = j1;
+            g++;
+            cmp++;
+        }
+        }
+        } while (d!=0);
+        do{
+            for (i = cmp; i < d+i; i++)
+            {
+                d=0;
+                if (strcmp(joueur[i - 1].poste, "guardien")==0)
+                {
+                    j1=joueur[j];
+                    for( j=i ; j>0 ; j-- ){
+                        joueur[j]=joueur[j-1];
+                    }
+                    joueur[j] = j1;
+                    g++;
+                    cmp++;
+                }
+            }
+        } while (d!=0);
+    // hna wsselt
+}
 
+void triage(struct joueurs joueur[], int indice)
+{
+    int i, cmp, j;
+    struct joueurs j1;
+    
+    for (i = 0; i < cmp + i; i++)
+    {
+        cmp = 0;
+        for (j = 0; j < indice - 1; j++)
+        {
+            if (joueur[j].age > joueur[j + 1].age)
+            {
+                j1 = joueur[j];
+                joueur[j] = joueur[j + 1];
+                joueur[j + 1] = j1;
+                cmp++;
+            }
+        }
+    }
+}
 int rechercheid (struct joueurs joueur[],int indice){
     int sr, i, answer=1212;
     printf("saisis l'identifiant du joueur à rechercher :");
@@ -82,6 +167,7 @@ int recherchenom (struct joueurs joueur[],int indice){
     }
     return answer;
 }
+
 int modification(struct joueurs joueur[],int indice){
     int k,p;
     Poste:
@@ -113,7 +199,7 @@ void affichage(struct joueurs joueur[] ,int indice){
     int j;
     for(j=0;j<indice;j++){
         printf("Id : %d\n",joueur[j].id);
-        printf("Nom : %s\t%s \n",joueur[j].prenom,joueur[j].nom);
+        printf("Nom : %s\t%s \n",joueur[j].prenom, joueur[j].nom);
         printf("Poste :%s \n",joueur[j].poste);
         printf("Numero : %d \n",joueur[j].nummaillot);
         printf("Age :%d ans\n",joueur[j].age);
@@ -122,30 +208,15 @@ void affichage(struct joueurs joueur[] ,int indice){
 }
 int main() {
 
-    int choix, n, i, choix1, choix2, choix3, id = 1, cmp, supp = 0, poste, search, sr, indice=0;
+    int choix, n, i, choix1, choix2, choix3, id = 1, cmp, supp = 0, poste, search, sr, indice=0, a;
     printf("Veuillez saisir le nombre max des joueurs dans l'equipe :");
     scanf("%d", &n);
     struct joueurs joueur[100];
-
     do
     {
-    Menu:
-        printf("\n---------- Menu ----------\n");
-        printf("1-Ajouter un joueur(s) \n");
-=======
-void main()
-{
-
-    int choix, n, i, choix1, id = 0, cmp, supp = 0, poste;
-    printf("Veuillez saisir le nombre max des joueurs dans l'equipe :");
-    scanf("%d", &n);
-    struct joueurs joueur[n];
-
-    do
-    {
-        printf("\n--- Menu  ---\n");
+        Menu:
+        printf("\n--------  Menu  --------\n");
         printf("1-Ajouter des joueurs \n");
->>>>>>> e34f43f5f0c7b825fe098a581a5588324bc303af
         printf("2-Afficher la liste des joueurs \n");
         printf("3-Modifier un joueur \n");
         printf("4-supprimer un joueur \n");
@@ -156,70 +227,23 @@ void main()
         switch (choix)
         {
         case 1:
-<<<<<<< HEAD
             printf("\n--- Menu d'ajout des joueurs ---\n");
             printf("1- Ajouter un seul joueur :\n");
             printf("2- Ajouter plusieurs joueurs :\n");
             printf("0- Retour au menu principal :\n");
-=======
-            printf("Vous voulez ajouter un joueur(1) ou plusieurs(2) :");
->>>>>>> e34f43f5f0c7b825fe098a581a5588324bc303af
             scanf("%d", &choix1);
             switch (choix1)
             {
             case 1:
-<<<<<<< HEAD
                 joueur[indice]=ajout(indice);
                 indice++;
                 id++;
-=======
-                joueur[id].id = id + 1;
-
-                printf("saisis le nom du joueur :");
-                scanf("%s", joueur[id].nom);
-
-                printf("saisis le prenom du joueur :");
-                scanf("%s", joueur[id].prenom);
-
-                printf("saisis le numero du maillot du joueur :");
-                scanf("%d", &joueur[id].nummaillot);
-
-                printf("saisis l'age du joueur :");
-                scanf("%d", &joueur[id].age);
-
-                printf("saisis le nombre des buts du joueurs :");
-                scanf("%d", &joueur[id].buts);
-
-                printf("choisir le poste du joueur :\n");
-                printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant ");
-                scanf("%d", poste);
-                switch (poste)
-                {
-                case 1:
-                    strcpy(joueur[id].poste, "guardien");
-                    break;
-                case 2:
-                    strcpy(joueur[id].poste, "defenseur");
-                    break;
-                case 3:
-                    strcpy(joueur[id].poste, "milieu");
-                    break;
-                case 4:
-                    strcpy(joueur[id].poste, "attaquant");
-                    break;
-
-                default:
-                    printf("ce choix ne correspond a aucun des postes !!");
-                    break;
-                }
-                id++;
-
->>>>>>> e34f43f5f0c7b825fe098a581a5588324bc303af
                 break;
+            
             case 2:
+                Ajout:
                 printf("saisis le nombre des joueurs que vous voulez ajouter :");
                 scanf("%d", &cmp);
-<<<<<<< HEAD
                 for (i = indice ; i < indice + cmp ; i++)
                 {
                     joueur[i]=ajout(i);
@@ -231,17 +255,38 @@ void main()
                 goto Menu;
 
             default:
-                printf("le choix vous avez entrez n'est pas disponible !!!");
-                goto Menu;
+                printf("le choix vous avez entrez n'est pas disponible !!!'Ressayez'\n");
+                goto Ajout;
             }
-            break;
         case 2:
-            printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-            for (i = 0; i < indice; i++)
+            printf("\n--- Menu d'affichage ---\n");
+            printf("1- Afficher suivant l'ordre alphabétique des Noms \n");
+            printf("2- Aficher suivant l'age \n");
+            printf("3- Afficher suivant les postes \n");
+            printf("0- Retour au menu principal :\n");
+            scanf("%d",&a);
+            switch (a)
             {
-                printf("Id: %d- %s %s ,Poste : %s ,Numero :(%d) ,%d ans,%d buts.\n", joueur[i].id, joueur[i].prenom, joueur[i].nom, joueur[i].poste, joueur[i].nummaillot, joueur[i].age, joueur[i].buts);
+            case 1:
+                trinom(joueur, indice);
+                printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                affichage(joueur, indice);
+                break;
+            case 2:
+                triage(joueur, indice);
+                printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                affichage(joueur, indice);
+                break;
+            case 3:
+                triposte(joueur, indice);
+                printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                affichage(joueur, indice);
+                break;
+            default:
+                printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice); 
+                break;
             }
-            break;
+           
         case 3:
             printf("\n----- Menu de modification -----\n");
             printf("1- Modifier le poste du joueur \n");
@@ -284,7 +329,7 @@ void main()
                     printf("le choix vous avez entrez n'est pas disponible !!!");
                     break;
                 }
-            //case 2:
+            case 2:
                 printf("\n----- Menu de recherche -----\n");
                 printf("1- rechercher par identifient \n");
                 printf("2 -rechercher par nom \n");
@@ -393,81 +438,9 @@ void main()
                 printf("le choix vous avez entrez n'est pas disponible !!!");
                 break;
             }
-
             break;
         default:
-        printf("Le choix que vous avez saisis ne convient a aucun des choix afficher dans le Menu !!!");
-=======
-
-                for (i = id; i < id + cmp; i++)
-                {
-
-                    joueur[id].id = id + 1;
-
-                    printf("saisis le nom du joueur :");
-                    scanf("%s", joueur[id].nom);
-
-                    printf("saisis le prenom du joueur :\n");
-                    scanf("%s", joueur[id].prenom);
-
-                    printf("saisis le numero du maillot du joueur :\n");
-                    scanf("%d", joueur[id].nummaillot);
-
-                    printf("saisis l'age du joueur :");
-                    scanf("%d", joueur[id].age);
-
-                    printf("saisis le nombre des buts du joueurs :\n");
-                    scanf("%d", joueur[id].buts);
-
-                    printf("choisir le poste du joueur :\n");
-                    printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant ");
-                    scanf("%d", poste);
-                    switch (poste)
-                    {
-                    case 1:
-                        strcpy(joueur[id].poste, "guardien");
-                        break;
-                    case 2:
-                        strcpy(joueur[id].poste, "defenseur");
-                        break;
-                    case 3:
-                        strcpy(joueur[id].poste, "milieu");
-                        break;
-                    case 4:
-                        strcpy(joueur[id].poste, "attaquant");
-                        break;
-
-                    default:
-                        printf("ce choix ne correspond a aucun des postes !!");
-                        break;
-                    }
-                }
-                id += cmp;
-
-                break;
-
-            default:
-                printf("le choix vous avez entrez n'est pas disponible !!!");
-                break;
-            }
-            break;
-        case 2:
-            printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", cmp - supp);
-            for (i = 0; i < id - supp; i++)
-            {
-
-                printf("%d- %s %s \t, %s \t,son numero est : (%d) ,%d ans,%d buts\n", joueur[i].id, joueur[i].prenom, joueur[i].nom, joueur[i].poste, joueur[i].nummaillot, joueur[i].age, joueur[i].buts);
-            }
-            break;
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        default:
->>>>>>> e34f43f5f0c7b825fe098a581a5588324bc303af
-            break;
+            ("Le choix que vous avez saisis ne convient a aucun des choix afficher dans le Menu !!!");
         }
-
-    } while (choix != 0);
+    }while (choix != 0);
 }
