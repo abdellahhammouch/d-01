@@ -11,9 +11,22 @@ struct joueurs
     int age;
     int buts;
 };
-struct joueurs joueur[100];
-int indice = 0;
-int id = 1;
+struct joueurs joueur[100] = {
+    {1, "ronaldo", "cristiano", 7, "attaquant", 40, 72},
+    {2, "messi", "lionel", 10, "attaquant", 38, 64},
+    {3, "vieira", "marcelo", 12, "defenseur", 37, 28},
+    {4, "ramos", "sergio", 4, "defenseur", 40, 42},
+    {5, "kroos", "toni", 8, "milieu", 35, 23},
+    {6, "iniesta", "andres", 6, "milieu", 41, 32},
+    {7, "debruyne", "kevin", 17, "milieu", 34, 36},
+    {8, "casillas", "iker", 1, "guardien", 44, 3},
+    {9, "mbappe", "kylien", 9, "attaquant", 25, 58},
+    {10, "alves", "dani", 2, "defenseur", 42, 36},
+};
+
+int indice = 10;
+int id = 11;
+
 struct joueurs ajout()
 {
     int p;
@@ -31,7 +44,7 @@ struct joueurs ajout()
     scanf("%d", &j.buts);
 Poste:
     printf("choisir le poste du joueur :\n");
-    printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant ");
+    printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant \n");
     scanf("%d", &p);
     switch (p)
     {
@@ -48,7 +61,7 @@ Poste:
         strcpy(j.poste, "attaquant");
         break;
     default:
-        printf("Le nombre que vous avez saisis ne correspond a aucun des postes 'Ressayez' ");
+        printf("Le nombre que vous avez saisis ne correspond a aucun des postes 'Ressayez' \n");
         goto Poste;
     }
     return j;
@@ -112,7 +125,7 @@ void triage()
 }
 int rechercheid(int re)
 {
-    int i , answer = -1;
+    int i, answer = -1;
     for (i = 0; i < indice; i++)
     {
         if (joueur[i].id == re)
@@ -142,7 +155,7 @@ void modificationposte(int adresse)
     int p;
 Poste:
     printf("choisir le poste du joueur :\n");
-    printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant ");
+    printf("1 = guardien ||  2 = defenseur || 3 = milieu ||  4 = attaquant \n");
     scanf("%d", &p);
     switch (p)
     {
@@ -178,23 +191,23 @@ void modificationbuts(int adresse)
 }
 void affichageu(int k)
 {
-    printf("Id : %d Nom : %s\t%s || Poste :%s || Numero : %d || Age :%d ans || Butes :%d \n", joueur[k].id, joueur[k].nom, joueur[k].prenom, joueur[k].poste, joueur[k].nummaillot, joueur[k].age, joueur[k].buts);
+    printf("Id : %d Nom : %s\t%s || Poste :%s || Numero : %d || Age :%d ans || Buts :%d \n", joueur[k].id, joueur[k].nom, joueur[k].prenom, joueur[k].poste, joueur[k].nummaillot, joueur[k].age, joueur[k].buts);
 }
 void affichage()
 {
     int j;
     for (j = 0; j < indice; j++)
     {
-        printf("Id : %d Nom : %s\t%s || Poste :%s || Numero : %d || Age :%d ans || Butes :%d \n", joueur[j].id , joueur[j].nom, joueur[j].prenom, joueur[j].poste, joueur[j].nummaillot, joueur[j].age, joueur[j].buts);
+        printf("Id : %d Nom : %s\t%s || Poste :%s || Numero : %d || Age :%d ans || Buts :%d \n", joueur[j].id, joueur[j].nom, joueur[j].prenom, joueur[j].poste, joueur[j].nummaillot, joueur[j].age, joueur[j].buts);
     }
 }
 void menurecherche()
 {
-    
-        printf("\n----- Menu de recherche -----\n");
-        printf("1- rechercher par identifient \n");
-        printf("2 -rechercher par nom \n");
-        printf("0- retour au menu principale \n");
+
+    printf("\n----- Menu de recherche -----\n");
+    printf("1- rechercher par identifient \n");
+    printf("2 -rechercher par nom \n");
+    printf("0- retour au menu principale \n");
 }
 
 int main()
@@ -216,6 +229,8 @@ int main()
         scanf("%d", &choix);
         switch (choix)
         {
+        case 0:
+            break;
         case 1:
             do
             {
@@ -266,45 +281,22 @@ int main()
                 switch (choix1)
                 {
                 case 1:
-                    if (indice > 1)
-                    {
-                        trinom();
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
-                    else
-                    {
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
+                    trinom();
+                    printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                    affichage();
+
                     break;
                 case 2:
-                    if (indice > 1)
-                    {
-                        trinom();
-                        triage();
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
-                    else
-                    {
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
+                    trinom();
+                    triage();
+                    printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                    affichage();
                     break;
                 case 3:
-                    if (indice > 1)
-                    {
-                        trinom();
-                        triposte();
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
-                    else
-                    {
-                        printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
-                        affichage();
-                    }
+                    trinom();
+                    triposte();
+                    printf("\n--- Liste des joueurs dans l'equipe (%d) ---\n", indice);
+                    affichage();
                     break;
                 case 0:
                     goto Menu;
@@ -336,11 +328,11 @@ int main()
                             scanf("%d", &sr);
                             if (rechercheid(sr) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationposte(rechercheid(sr));
                             }
                             break;
@@ -349,11 +341,11 @@ int main()
                             scanf("%s", search);
                             if (recherchenom(search) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationposte(recherchenom(search));
                             }
                             break;
@@ -361,7 +353,7 @@ int main()
                             goto Menu;
                             break;
                         default:
-                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!!");
+                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!!\n");
                             break;
                         }
                     } while (choix2 != 0);
@@ -377,11 +369,11 @@ int main()
                             scanf("%d", &sr);
                             if (rechercheid(sr) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationage(rechercheid(sr));
                             }
                             break;
@@ -390,11 +382,11 @@ int main()
                             scanf("%s", search);
                             if (recherchenom(search) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationage(recherchenom(search));
                             }
                             break;
@@ -402,7 +394,7 @@ int main()
                             goto Menu;
                             break;
                         default:
-                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!!");
+                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!! \n");
                             break;
                         }
                     } while (choix2 != 0);
@@ -418,24 +410,24 @@ int main()
                             scanf("%d", &sr);
                             if (rechercheid(sr) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationbuts(rechercheid(sr));
                             }
                             break;
                         case 2:
-                        printf("saisis le nom du joueur à rechercher :");
-                        scanf("%s", search);
+                            printf("saisis le nom du joueur à rechercher :");
+                            scanf("%s", search);
                             if (recherchenom(search) == -1)
                             {
-                                printf("Le joueur ne fait pas partie de l'equipe ");
+                                printf("Le joueur ne fait pas partie de l'equipe \n");
                             }
                             else
                             {
-                                printf("le joueur fait partie de l'equipe :");
+                                printf("le joueur fait partie de l'equipe \n");
                                 modificationbuts(recherchenom(search));
                             }
                             break;
@@ -443,12 +435,12 @@ int main()
                             goto Menu;
                             break;
                         default:
-                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!!");
+                            printf("Votre choix n'est pas disponible dans le Menu de recherche !!!\n");
                             break;
                         }
                     } while (choix2 != 0);
                 default:
-                    printf("Votre choix n'est pas disponible dans le Menu de modification !!!");
+                    printf("Votre choix n'est pas disponible dans le Menu de modification !!!\n");
                     goto Menu;
                 }
                 break;
@@ -456,7 +448,7 @@ int main()
         case 4:
             printf("saisis l'identifiant du joueur à supprimer :");
             scanf("%d", &sr);
-            pos=rechercheid(sr);
+            pos = rechercheid(sr);
             if (pos == -1)
             {
                 printf("L'id que vous avez saisis nr convient a aucun des joueurs 'Ressayez' \n");
@@ -483,11 +475,11 @@ int main()
                     scanf("%d", &sr);
                     if (rechercheid(sr) == -1)
                     {
-                        printf("Le joueur ne fait pas partie de l'equipe ");
+                        printf("Le joueur ne fait pas partie de l'equipe \n");
                     }
                     else
                     {
-                        printf("le joueur fait partie de l'equipe :");
+                        printf("le joueur fait partie de l'equipe  _n");
                         affichageu(rechercheid(sr));
                     }
                     break;
@@ -496,12 +488,12 @@ int main()
                     scanf("%s", search);
                     if (recherchenom(search) == -1)
                     {
-                        printf("Le joueur ne fait pas partie de l'equipe ");
+                        printf("Le joueur ne fait pas partie de l'equipe \n");
                         break;
                     }
                     else
                     {
-                        printf("le joueur fait partie de l'equipe :");
+                        printf("le joueur fait partie de l'equipe \n");
                         affichageu(recherchenom(search));
                         break;
                     }
@@ -529,7 +521,7 @@ int main()
                 switch (choix1)
                 {
                 case 1:
-                    printf("Le nombres total des joueurs dans l'équipe est :%d", indice );
+                    printf("Le nombres total des joueurs dans l'équipe est :%d", indice);
                     break;
                 case 2:
                     for (i = 0; i < indice; i++)
@@ -537,7 +529,7 @@ int main()
                         som += joueur[i].age;
                     }
                     som = som / (indice);
-                    printf("l'age moyen des joueurs dans l'equipe est : %d", som);
+                    printf("l'age moyen des joueurs dans l'equipe est : %d \n", som);
                     break;
                 case 3:
                     printf("saisis le nombre des buts :");
@@ -566,9 +558,9 @@ int main()
                     }
                     break;
                 case 5:
-                    agemin=joueur[0].age;
-                    agemax=joueur[0].age;
-                    for(i = 0; i < indice; i++)
+                    agemin = joueur[0].age;
+                    agemax = joueur[0].age;
+                    for (i = 0; i < indice; i++)
                     {
                         if (joueur[i].age > agemax)
                         {
